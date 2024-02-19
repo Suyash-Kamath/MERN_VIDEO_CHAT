@@ -1,0 +1,12 @@
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.glass {
+  background-image: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.2) 70%
+  );
+  backdrop-filter: blur(2px);
+}
