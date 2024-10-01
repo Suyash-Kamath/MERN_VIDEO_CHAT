@@ -34,11 +34,19 @@ export default function ChatMessages({ message, messages }) {
           const time = new Date(m.createdAt);
           const hours = time.getHours();
           const minutes = time.getMinutes();
-          const isPM = hours > 12;
+          const isPM = hours >= 12;
           const addZero = minutes < 10;
           const timeStamp = isPM
             ? `${hours - 12}:${addZero ? "0" + minutes : minutes} PM`
-            : `${hours}:${minutes} AM`;
+            : `${hours}:${addZero ? "0" + minutes : minutes} AM`;
+          
+          // Date and day
+          const dayOptions = { weekday: 'long' };
+          const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+          const day = new Intl.DateTimeFormat('en-US', dayOptions).format(time);
+          const date = new Intl.DateTimeFormat('en-US', dateOptions).format(time);
+          
+          const fullTimestamp = `${day}, ${date} ${timeStamp}`;
 
           return (
             <div
@@ -58,7 +66,7 @@ export default function ChatMessages({ message, messages }) {
                 placement={isRemoteUser ? "right" : "left"}
                 overlay={
                   <Tooltip id={m._id}>
-                    <strong>{timeStamp}</strong>
+                    <strong>{fullTimestamp}</strong>
                   </Tooltip>
                 }
               >
