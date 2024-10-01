@@ -51,7 +51,7 @@ export default function Navigation() {
 
       <Navbar.Brand>
         <Link className="text-decoration-none display-5" to="/">
-          Converse
+          Code-Collab
         </Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
